@@ -10,21 +10,21 @@ test.beforeEach(t => {
 
 test('android', async t => {
 	const landscape = [
-		'drawable-ldpi-land/splash.png',
-		'drawable-mdpi-land/splash.png',
-		'drawable-hdpi-land/splash.png',
-		'drawable-xhdpi-land/splash.png',
-		'drawable-xxhdpi-land/splash.png',
-		'drawable-xxxhdpi-land/splash.png'
+		'drawable-ldpi-land/default.png',
+		'drawable-mdpi-land/default.png',
+		'drawable-hdpi-land/default.png',
+		'drawable-xhdpi-land/default.png',
+		'drawable-xxhdpi-land/default.png',
+		'drawable-xxxhdpi-land/default.png'
 	];
 
 	const portrait = [
-		'drawable-ldpi-port/splash.png',
-		'drawable-mdpi-port/splash.png',
-		'drawable-hdpi-port/splash.png',
-		'drawable-xhdpi-port/splash.png',
-		'drawable-xxhdpi-port/splash.png',
-		'drawable-xxxhdpi-port/splash.png'
+		'drawable-ldpi-port/default.png',
+		'drawable-mdpi-port/default.png',
+		'drawable-hdpi-port/default.png',
+		'drawable-xhdpi-port/default.png',
+		'drawable-xxhdpi-port/default.png',
+		'drawable-xxxhdpi-port/default.png'
 	];
 
 	await m('test/fixtures/icon.png', {platform: 'android', dest: t.context.tmp, draw9patch: false});
@@ -102,7 +102,7 @@ test('9patch', async t => {
 	await m('test/fixtures/icon.svg', {platform: 'android', dest: t.context.tmp, orientation: 'portrait'});
 
 	exists(t, 'drawable-ldpi-port/splash.9.png');
-	notExists(t, 'drawable-ldpi-port/splash.png');
+	notExists(t, 'drawable-ldpi-port/default.png');
 
 	const {width, height} = await size(path.join(t.context.tmp, 'drawable-ldpi-port/splash.9.png'));
 	t.is(width, 202);
@@ -113,9 +113,9 @@ test('no 9patch', async t => {
 	await m('test/fixtures/icon.svg', {platform: 'android', dest: t.context.tmp, orientation: 'portrait', draw9patch: false});
 
 	notExists(t, 'drawable-ldpi-port/splash.9.png');
-	exists(t, 'drawable-ldpi-port/splash.png');
+	exists(t, 'drawable-ldpi-port/default.png');
 
-	const {width, height} = await size(path.join(t.context.tmp, 'drawable-ldpi-port/splash.png'));
+	const {width, height} = await size(path.join(t.context.tmp, 'drawable-ldpi-port/default.png'));
 	t.is(width, 200);
 	t.is(height, 320);
 });
